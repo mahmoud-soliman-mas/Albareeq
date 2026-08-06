@@ -1569,14 +1569,40 @@ function initContactForm() {
     const btn = $('#submitBtn');
     const txt = $('#submitText');
     const spin = $('#submitSpinner');
+    
     btn.disabled = true;
     txt.style.display = 'none';
     spin.style.display = 'flex';
 
-    await new Promise(r => setTimeout(r, 1800));
+    const name = fields.name.el.value.trim();
+    const phone = fields.phone.el.value.trim();
+    const service = fields.service.el.value;
+    const message = fields.message.el.value.trim();
 
-    form.style.display = 'none';
-    $('#formSuccess').style.display = 'block';
+    const whatsappMessage = `*طلب عرض سعر جديد*
+
+👤 الاسم:
+${name}
+
+📞 رقم الهاتف:
+${phone}
+
+🛠️ الخدمة المطلوبة:
+${service}
+
+📝 تفاصيل الطلب:
+${message}`;
+
+window.open(
+      `https://wa.me/201118049615?text=${encodeURIComponent(whatsappMessage)}`,
+      '_blank'
+    );
+
+    btn.disabled = false;
+    txt.style.display = 'inline';
+    spin.style.display = 'none';
+
+    form.reset();
   });
 }
 

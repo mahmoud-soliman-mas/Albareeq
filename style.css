@@ -206,9 +206,9 @@ input,textarea,select{font-family:var(--font)}
 .h-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 18px;background:rgba(199,164,91,.1);border:1px solid rgba(199,164,91,.28);border-radius:50px;font-size:.8rem;color:var(--gold-lt);margin-bottom:22px;letter-spacing:.05em}
 .h-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:dotPulse 2s ease infinite}
 @keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
-.h-title-big{font-size:clamp(3.8rem,9vw,8rem);font-weight:900;line-height:.88;background:linear-gradient(135deg,var(--gold-dk) 0%,var(--gold) 45%,var(--gold-lt) 65%,var(--gold) 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldAnim 5s ease infinite;letter-spacing:-.02em;margin-bottom:6px}
+.h-title-big{font-size:clamp(5.5rem,9vw,7rem);font-weight:900;line-height: 1.15;padding-top: 18px;overflow: visible;background:linear-gradient(135deg,var(--gold-dk) 0%,var(--gold) 45%,var(--gold-lt) 65%,var(--gold) 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldAnim 5s ease infinite;letter-spacing:-.02em;margin-bottom:6px}
 @keyframes goldAnim{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.h-title-sub{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:300;color:var(--text-2);letter-spacing:.08em;margin-bottom:14px}
+.h-title-sub{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:300;color:var(--text-2);letter-spacing:.08em;margin-bottom:14px;margin-top:20px}
 .h-tagline{font-size:clamp(.95rem,1.8vw,1.2rem);color:var(--gold-lt);font-weight:300;letter-spacing:.07em;margin-bottom:14px}
 .h-desc{font-size:1rem;color:var(--text-2);max-width:580px;margin:0 auto 36px;line-height:1.75}
 .h-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
