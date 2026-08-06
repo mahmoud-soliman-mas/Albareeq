@@ -1691,7 +1691,20 @@ function initNavbar() {
   ham.addEventListener('click', () => {
     ham.classList.toggle('open');
     menu.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    document.querySelectorAll('.nav-dropdown > .nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            link.parentElement.classList.toggle('open');
+        }
+    });
+});
+
+    if (menu.classList.contains('open')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   });
 
   document.addEventListener('click', (e) => {
@@ -1700,6 +1713,15 @@ function initNavbar() {
       menu.classList.remove('open');
       document.body.style.overflow = '';
     }
+  });
+
+  // إغلاق القائمة عند الضغط على أي لينك
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      ham.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 }
 
