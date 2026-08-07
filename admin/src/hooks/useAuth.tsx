@@ -10,9 +10,10 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
+// غيّر القيم هنا إلى البريد وكلمة المرور الخاصة بك
 const ADMIN_CREDENTIALS = {
-  email: 'admin@albariq.com',
-  password: 'Admin#2025',
+  email: 'admin0909@dashbord.com',
+  password: 'Admin#2026',
 };
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {

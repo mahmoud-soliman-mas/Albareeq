@@ -26,15 +26,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/admin/page.js"
     ],
-    "/admin/hero/page": [
+    "/admin/services/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/admin/hero/page.js"
-    ],
-    "/admin/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/about/page.js"
+      "static/chunks/app/admin/services/page.js"
     ]
   }
 }

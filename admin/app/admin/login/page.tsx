@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState('admin@albariq.com');
-  const [password, setPassword] = useState('Admin#2025');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
