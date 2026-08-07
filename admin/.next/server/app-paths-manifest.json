@@ -1,15 +1,8 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/admin/about/page": "app/admin/about/page.js",
-  "/admin/faq/page": "app/admin/faq/page.js",
-  "/admin/contact/page": "app/admin/contact/page.js",
   "/admin/hero/page": "app/admin/hero/page.js",
-  "/admin/login/page": "app/admin/login/page.js",
-  "/admin/testimonials/page": "app/admin/testimonials/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js",
   "/admin/media/page": "app/admin/media/page.js",
+  "/admin/about/page": "app/admin/about/page.js",
   "/admin/services/page": "app/admin/services/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/admin/settings/page": "app/admin/settings/page.js",
-  "/page": "app/page.js"
+  "/admin/testimonials/page": "app/admin/testimonials/page.js"
 }
