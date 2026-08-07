@@ -136,7 +136,7 @@ function renderFooter() {
             <li><a data-link data-href="/projects">مشاريعنا</a></li>
             <li><a data-link data-href="/gallery">معرض الأعمال</a></li>
             <li><a data-link data-href="/about">عن الشركة</a></li>
-            <li><a href="http://localhost:3000/admin/login" target="_blank" rel="noopener">لوحة التحكم</a></li>
+            <li><a href="http://localhost:3005/admin/login" target="_blank" rel="noopener">لوحة التحكم</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1402,14 +1402,14 @@ function pageContact() {
 
 /* ---- 404 ---- */
 function pageAdminRedirect() {
-  window.location.href = 'http://localhost:3000/admin/login';
+  window.location.href = 'http://localhost:3005/admin/login';
   return `
     <section style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding-top:var(--nav-h);text-align:center">
       <div class="wrap rv rv-up" style="max-width:720px;">
         <div class="s-label">Admin</div>
         <h1 class="s-title" style="font-size:clamp(2.6rem,6vw,4rem)">لوحة تحكم الإدارة</h1>
         <p class="s-sub" style="margin:0 auto 32px;max-width:640px;">إذا لم يتم التحويل تلقائيًا، اضغط على الرابط التالي.</p>
-        <a href="http://localhost:3000/admin/login" class="btn btn-gold" target="_blank" rel="noopener">فتح لوحة التحكم</a>
+        <a href="http://localhost:3005/admin/login" class="btn btn-gold" target="_blank" rel="noopener">فتح لوحة التحكم</a>
       </div>
     </section>
   `;
