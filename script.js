@@ -136,6 +136,7 @@ function renderFooter() {
             <li><a data-link data-href="/projects">مشاريعنا</a></li>
             <li><a data-link data-href="/gallery">معرض الأعمال</a></li>
             <li><a data-link data-href="/about">عن الشركة</a></li>
+            <li><a data-link data-href="/admin">لوحة التحكم</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1400,6 +1401,24 @@ function pageContact() {
 }
 
 /* ---- 404 ---- */
+function pageAdminRedirect() {
+  updateSEO('لوحة تحكم الإدارة | البريق', 'انتقل إلى لوحة التحكم الإدارية لإدارة الموقع.', '/admin');
+  return `
+    <section style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding-top:var(--nav-h);text-align:center">
+      <div class="wrap rv rv-up" style="max-width:720px;">
+        <div class="s-label">Admin</div>
+        <h1 class="s-title" style="font-size:clamp(2.6rem,6vw,4rem)">لوحة تحكم الإدارة</h1>
+        <p class="s-sub" style="margin:0 auto 32px;max-width:640px;">هذه الصفحة توجهك إلى لوحة تحكم الإدارة. إذا كنت تشغّل التطبيق محلياً، افتح لوحة التحكم منفصلة عبر خادم Next.js.</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;">
+          <a href="/admin/login" class="btn btn-gold">فتح لوحة التحكم</a>
+          <a href="http://localhost:3000/admin/login" class="btn btn-wa" target="_blank" rel="noopener">فتح عبر المنفذ 3000</a>
+        </div>
+        <p class="s-sub" style="margin-top:24px; opacity:.75;">إذا لم يعمل الرابط، تأكد من تشغيل npm run admin:dev في مجلد admin.</p>
+      </div>
+    </section>
+  `;
+}
+
 function pageNotFound() {
   updateSEO('الصفحة غير موجودة | البريق للزجاج والمرايا', 'عذراً، الصفحة التي تبحث عنها غير موجودة. العودة للصفحة الرئيسية.', '/404');
   return `
@@ -1432,6 +1451,7 @@ const routes = {
   '/areas': pageAreas,
   '/maintenance': pageMaintenance,
   '/contact': pageContact,
+  '/admin': pageAdminRedirect,
 };
 
 const dynamicRoutes = [
