@@ -119,7 +119,7 @@ function renderFooter() {
       <div class="footer-grid">
         <div class="footer-col footer-brand">
           <div class="nav-logo" data-link style="cursor:pointer" data-href="/">
-            <img src="/logo.png_(2).png" alt="البريق للزجاج والمرايا" class="nav-logo-img" style="height:42px" />
+            <img src="/logo.png" alt="البريق للزجاج والمرايا" class="nav-logo-img" style="height:42px" />
             <div class="nav-logo-text">
               <span class="nav-logo-ar">البريق</span>
               <span class="nav-logo-en">AL-BARIQ GLASS</span>
@@ -135,8 +135,7 @@ function renderFooter() {
             <li><a data-link data-href="/services">خدماتنا</a></li>
             <li><a data-link data-href="/projects">مشاريعنا</a></li>
             <li><a data-link data-href="/gallery">معرض الأعمال</a></li>
-            <li><a data-link data-href="/quality">الجودة</a></li>
-            <li><a data-link data-href="/why-us">لماذا نحن</a></li>
+            <li><a data-link data-href="/about">عن الشركة</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -829,6 +828,107 @@ function pageGallery() {
   `;
 }
 
+/* ---- ABOUT THE COMPANY ---- */
+function pageAboutCompany() {
+  updateSEO('عن الشركة | البريق للزجاج والمرايا', 'تعرف على البريق للزجاج والمرايا: حلول متكاملة في الزجاج والمرايا مع التزام كامل بالجودة والخدمة الاحترافية.', '/about');
+  const faqs = [
+    ['هل توفرون المعاينة؟','نعم، نوفر خدمة المعاينة للمشروعات التي تتطلب ذلك، بهدف أخذ القياسات وتحديد أفضل الحلول المناسبة. يتم تحديد موعد للمعاينة عند الحاجة.'],
+    ['هل يمكن تنفيذ الأعمال حسب المقاسات المطلوبة؟','بالتأكيد، يتم تنفيذ جميع الأعمال وفق القياسات الفعلية للموقع. جميع أعمالنا تُنفذ حسب القياسات الفعلية لضمان الملاءمة التامة.'],
+    ['هل تقدمون خدمات للمنازل والشركات؟','نعم، نقدم خدماتنا للعملاء الأفراد، والشركات، والمكاتب، والمحلات التجارية، والمنشآت المختلفة. نخدم قطاعات متعددة تشمل المنازل والفلل والشركات والمطاعم والفنادق والمستشفيات وغيرها.'],
+    ['هل يمكن تنفيذ تصميمات خاصة؟','نعم، يمكن تنفيذ تصميمات مخصصة بما يتناسب مع احتياجات العميل وطبيعة المشروع. نوفر حلولاً مختلفة تناسب أنماط الديكور المتعددة.'],
+    ['هل تقدمون خدمات الصيانة؟','نعم، نقدم خدمات الصيانة لبعض أعمال الزجاج والمرايات، بما في ذلك استبدال الزجاج التالف، تغيير الإكسسوارات، وضبط الأبواب.'],
+    ['كيف يمكن طلب عرض سعر؟','يمكن التواصل معنا عبر الهاتف أو واتساب وإرسال تفاصيل المشروع أو الصور إن وجدت. سيقوم فريقنا بمراجعة الطلب والتواصل معك في أقرب وقت.'],
+    ['ما هي المناطق التي تغطونها؟','نخدم القاهرة، الجيزة، مدينة 6 أكتوبر، الشيخ زايد، التجمع الخامس، مدينة نصر، مصر الجديدة، المعادي، الشروق، العبور، الرحاب، والعاصمة الإدارية الجديدة.'],
+  ];
+
+  return `
+    <section class="hero-glass">
+      <div class="hg-bg" style="background-image:url('${IMG.arch5}')"></div>
+      <div class="hg-shapes">
+        <div class="hg-shape" style="width:300px;height:300px;top:10%;right:5%;animation-duration:22s"></div>
+        <div class="hg-shape" style="width:220px;height:220px;bottom:10%;left:8%;animation-duration:18s;animation-direction:reverse"></div>
+      </div>
+      <div class="hg-content">
+        <div class="rv rv-right">
+          ${breadcrumb([{label:'الرئيسية',href:'/'},{label:'عن الشركة',href:'/about'}])}
+          <div class="s-label">عن الشركة</div>
+          <h1 class="s-title" style="font-size:clamp(2rem,4vw,3rem)">البريق للزجاج والمرايا<br><span class="gold">خبرة وجودة في كل مشروع</span></h1>
+          <p class="s-sub">نقدم حلولاً متكاملة في تصميم وتصنيع وتركيب الزجاج والمرايات مع تركيز كامل على الجودة، الدقة، والتواصل الواضح مع العميل.</p>
+          <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+            <a href="${WA}" target="_blank" rel="noopener" class="btn btn-wa">واتساب</a>
+            <a data-link data-href="/contact" class="btn btn-gold">تواصل معنا</a>
+          </div>
+        </div>
+        <div class="rv rv-left" style="display:flex;justify-content:center;align-items:center">
+          <img src="${IMG.arch6}" alt="عن الشركة" style="border-radius:28px;box-shadow:var(--sh-lg);max-width:100%;height:auto;" />
+        </div>
+      </div>
+    </section>
+
+    <section class="pad">
+      <div class="wrap">
+        <div class="s-head rv rv-up">
+          <div class="s-label">الجودة</div>
+          <h2 class="s-title">جودة العمل <span class="gold">من البداية حتى النهاية</span></h2>
+        </div>
+        <div class="qual-pillars">
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z')}</div>
+            <h3>اختيار الخامات</h3>
+            <p>نستخدم خامات زجاج وإكسسوارات عالية الجودة لتدوم وتظهر بأفضل شكل.</p>
+          </div>
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z')}</div>
+            <h3>القياسات الدقيقة</h3>
+            <p>نعتمد قياسات دقيقة لضمان تشغيل وتركيب مثالي دون فروقات.</p>
+          </div>
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4')}</div>
+            <h3>تنفيذ متقن</h3>
+            <p>فريقنا المتخصص يطبق أفضل أساليب التركيب لضمان نتائج احترافية.</p>
+          </div>
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M22 11.08V12a10 10 0 1 1-5.93-9.14 M22 4 12 14.01 9 11.01')}</div>
+            <h3>مراجعة نهائية</h3>
+            <p>نراجع العمل قبل التسليم للتأكد من مطابقة أعلى معايير الجودة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pad-sm">
+      <div class="wrap">
+        <div class="s-head rv rv-up">
+          <div class="s-label">لماذا تختارنا</div>
+          <h2 class="s-title">نحن نضع <span class="gold">رضا العميل</span> أولاً</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card gc rv rv-up"><div class="why-icon">${svgIcon('M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z')}</div><h3>الخبرة</h3><p>خبرتنا الواسعة تضمن نتائج عالية الجودة.</p></div>
+          <div class="why-card gc rv rv-up"><div class="why-icon">${svgIcon('M20 6 9 17 4 12')}</div><h3>الجودة</h3><p>نحرص على استخدام مواد دقيقة التشطيب ومتانة عالية.</p></div>
+          <div class="why-card gc rv rv-up"><div class="why-icon">${svgIcon('M12 22a10 10 0 1 0 10 10 M12 8v4l3 3')}</div><h3>الالتزام</h3><p>نلتزم بالمواعيد ونسلم المشروع بالجودة المتفق عليها.</p></div>
+          <div class="why-card gc rv rv-up"><div class="why-icon">${svgIcon('M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z')}</div><h3>خدمة عملاء</h3><p>نرافقك بخدمة محترفة وتواصل فعّال طوال المشروع.</p></div>
+          <div class="why-card gc rv rv-up"><div class="why-icon">${svgIcon('M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z')}</div><h3>حلول مخصصة</h3><p>نصمم حلولاً تتناسب مع احتياجات مكانك وطبيعة مشروعك.</p></div>
+          <div class="why-card gc rv rv-up"><div class="why-icon">${svgIcon('M22 11.08V12a10 10 0 1 1-5.93-9.14 M22 4 12 14.01 9 11.01')}</div><h3>الاعتمادية</h3><p>نعمل لكي تكون مشاريعك مطمئنة وجاهزة للاستخدام طويل الأمد.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pad">
+      <div class="wrap">
+        <div class="s-head rv rv-up">
+          <div class="s-label">الأسئلة الشائعة</div>
+          <h2 class="s-title">إجابات واضحة على <span class="gold">أهم الأسئلة</span></h2>
+        </div>
+        <div class="faq-wrap">
+          ${faqs.map(f => faqItem(f[0], f[1])).join('')}
+        </div>
+      </div>
+    </section>
+
+    ${ctaBanner('البريق شريكك الموثوق', 'اعرف المزيد عن خبرتنا في تنفيذ أعمال الزجاج والمرايا، وجودتنا في كل خطوة من المشروع.')}
+  `;
+}
+
 /* ---- QUALITY ---- */
 function pageQuality() {
   updateSEO('الجودة | البريق للزجاج والمرايا', 'تعرف على معايير الجودة في البريق للزجاج والمرايا - من اختيار الخامات إلى دقة القياسات والتنفيذ الاحترافي والمراجعة قبل التسليم.', '/quality');
@@ -845,9 +945,6 @@ function pageQuality() {
           <div class="s-label">الجودة والالتزام</div>
           <h1 class="s-title" style="font-size:clamp(2rem,4vw,3rem)">الجودة هي أساس <span class="gold">كل مشروع</span></h1>
           <p class="s-sub">في البريق للزجاج والمرايا نؤمن أن جودة العمل لا تعتمد على المنتج فقط، بل تشمل جميع مراحل التنفيذ. لهذا نحرص على اتباع خطوات عمل واضحة تساعدنا على تقديم نتائج تلبي توقعات عملائنا.</p>
-        </div>
-        <div class="rv rv-left" style="display:flex;justify-content:center">
-          <img src="/logo.png_(2).png" alt="البريق للزجاج والمرايا" style="width:240px;filter:drop-shadow(0 0 30px rgba(199,164,91,.3))" />
         </div>
       </div>
     </section>
@@ -1204,9 +1301,6 @@ function pageContact() {
             </a>
           </div>
         </div>
-        <div class="rv rv-left" style="display:flex;justify-content:center;align-items:center">
-          <img src="/logo.png_(2).png" alt="البريق للزجاج والمرايا" style="width:220px;filter:drop-shadow(0 0 30px rgba(199,164,91,.3))" />
-        </div>
       </div>
     </section>
 
@@ -1331,11 +1425,12 @@ const routes = {
   '/services': pageServices,
   '/projects': pageProjects,
   '/gallery': pageGallery,
-  '/quality': pageQuality,
-  '/why-us': pageWhyUs,
+  '/about': pageAboutCompany,
+  '/quality': pageAboutCompany,
+  '/why-us': pageAboutCompany,
+  '/faq': pageAboutCompany,
   '/areas': pageAreas,
   '/maintenance': pageMaintenance,
-  '/faq': pageFAQ,
   '/contact': pageContact,
 };
 
@@ -1653,25 +1748,25 @@ function navLightbox(dir) {
   openLightbox();
 }
 
-/* ============================================================
-   PARTICLES
-============================================================ */
-function createParticles(container, count, gold = false) {
-  if (!container) return;
-  for (let i = 0; i < count; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 4 + 1;
-    const color = gold ? `rgba(199,164,91,${Math.random()*0.4+0.1})` : Math.random() > 0.5 ? `rgba(199,164,91,${Math.random()*0.3+0.05})` : `rgba(255,255,255,${Math.random()*0.15+0.05})`;
-    Object.assign(p.style, {
-      width: `${size}px`, height: `${size}px`,
-      left: `${Math.random()*100}%`, bottom: '-10px',
-      background: color, animationDuration: `${Math.random()*15+10}s`,
-      animationDelay: `${Math.random()*15}s`,
-      boxShadow: gold ? `0 0 ${size*2}px ${color}` : 'none',
-    });
-    container.appendChild(p);
-  }
+function initIntroOverlay() {
+  const overlay = $('#intro-overlay');
+  const enter = $('#intro-enter');
+  if (!overlay || !enter) return;
+
+  document.body.style.overflow = 'hidden';
+
+  const hideIntro = () => {
+    overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  const openDoors = () => {
+    overlay.classList.add('opened');
+  };
+
+  enter.addEventListener('click', hideIntro);
+  setTimeout(openDoors, 600);
+  setTimeout(hideIntro, 4200);
 }
 
 /* ============================================================
@@ -1767,24 +1862,12 @@ function initThemeToggle() {
 }
 
 /* ============================================================
-   LOADER
-============================================================ */
-function initLoader() {
-  const loader = $('#loader');
-  createParticles($('#loaderParticles'), 25, true);
-  setTimeout(() => {
-    loader.classList.add('out');
-    setTimeout(() => { loader.style.display = 'none'; }, 800);
-  }, 3000);
-}
-
-/* ============================================================
    INIT
 ============================================================ */
 window.addEventListener('popstate', router);
 
 document.addEventListener('DOMContentLoaded', () => {
-  initLoader();
+  initIntroOverlay();
   initNavbar();
   initCursorGlow();
   initThemeToggle();

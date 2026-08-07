@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "admin:install": "npm --prefix admin install",
+    "admin:dev": "npm --prefix admin run dev",
+    "admin:build": "npm --prefix admin run build",
+    "admin:start": "npm --prefix admin run start"
   },
   "devDependencies": {
     "vite": "^5.4.2"
