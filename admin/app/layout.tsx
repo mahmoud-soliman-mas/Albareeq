@@ -16,6 +16,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="format-detection" content="telephone=no" />
+        {/* Theme and icons for better mobile integration */}
+        <meta name="theme-color" content="#05070d" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="msapplication-TileColor" content="#05070d" />
       </head>
       <body>
         <AuthProvider>{children}</AuthProvider>
