@@ -12,8 +12,9 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 // غيّر القيم هنا إلى البريد وكلمة المرور الخاصة بك
 const ADMIN_CREDENTIALS = {
-  email: 'admin0909@dashbord.com',
-  password: 'Admin#2026',
+  // Updated to match README default credentials
+  email: 'admin@albariq.com',
+  password: 'Admin#2025',
 };
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
