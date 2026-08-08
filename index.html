@@ -10,7 +10,8 @@
 
   <!-- Open Graph -->
   <meta id="og-title" property="og:title" content="البريق للزجاج والمرايا | حلول زجاج متكاملة في مصر" />
-  <meta id="og-desc" property="og:description" content="حلول متكاملة في تصميم وتصنيع وتركيب الزجاج السيكوريت والمرايات وواجهات المح[...]]" />
+  <meta id="og-desc" property="og:description" content="حلول متكاملة في تصميم وتصنيع وتركيب الزجاج السيكوريت والمرايات وواجهات المح[...]
+" />
   <meta property="og:type" content="website" />
   <meta id="og-url" property="og:url" content="https://albariqglass.com/" />
   <meta property="og:site_name" content="البريق للزجاج والمرايا" />
@@ -64,34 +65,11 @@
 
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Intro CSS (inline small styles for overlay) -->
-  <style>
-    /* Simple intro overlay styles. Video is from public/intro-video.mp4 */
-    #intro-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:9999;transition:opacity .45s ease,visibility .45s;}
-    #intro-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
-    #intro-overlay video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.48);transition:transform .6s ease}
-    #intro-overlay.opened video{transform:scale(1.03)}
-    #intro-overlay .intro-controls{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;color:#fff}
-    #intro-enter{background:rgba(255,255,255,.92);border:0;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer}
-    #intro-skip{margin-top:10px;background:transparent;border:0;color:rgba(255,255,255,.85);cursor:pointer}
-  </style>
 </head>
 <body>
 
-  <!-- Intro overlay (uses public/intro-video.mp4) -->
-  <div id="intro-overlay" aria-hidden="false">
-    <video id="intro-video" src="/intro-video.mp4" autoplay muted playsinline></video>
-    <div class="intro-controls">
-      <button id="intro-enter">دخول</button>
-      <button id="intro-skip">تخطي</button>
-    </div>
-  </div>
-
   <!-- Loading Progress Bar -->
   <div id="progress-bar"></div>
-
-  <!-- React Intro root (replaces legacy static intro) -->
-  <div id="react-intro-root" aria-hidden="false"></div>
 
   <!-- Custom Cursor -->
   <div id="cursor-glow"></div>
@@ -102,8 +80,8 @@
   </button>
 
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/201118049615?text=مرحباً، أريد الاستفسار عن خدمات البريق للزجاج والمرايا" id="whatsapp-float" target="_blank" rel="noopener [...]">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15[[...]"></path></svg>
+  <a href="https://wa.me/201118049615?text=مرحباً، أريد الاستفسار عن خدمات البريق للزجاج والمرايا" id="whatsapp-float" target="_blank" rel="noopener[...]">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15[...]"/>
     <span>واتساب</span>
   </a>
 
@@ -176,35 +154,7 @@
   <!-- FOOTER (rendered by JS) -->
   <div id="footer-root"></div>
 
-  <!-- Intro module (React + Framer Motion via CDN) -->
-
   <script type="module" src="./main.js"></script>
 
-  <!-- Small inline fallback script: wire the skip button to hide the overlay immediately -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const overlay = document.getElementById('intro-overlay');
-      const enter = document.getElementById('intro-enter');
-      const skip = document.getElementById('intro-skip');
-      const video = document.getElementById('intro-video');
-      if(!overlay) return;
-      // clicking enter hides intro (matching initIntroOverlay behaviour)
-      enter?.addEventListener('click', () => {
-        overlay.classList.add('hidden');
-        if(video && !video.paused) video.pause();
-        document.body.style.overflow = '';
-      });
-      skip?.addEventListener('click', () => {
-        overlay.classList.add('hidden');
-        if(video && !video.paused) video.pause();
-        document.body.style.overflow = '';
-      });
-      // ensure body scroll locked while intro visible
-      document.body.style.overflow = 'hidden';
-      // auto-hide after 4.2s (matches previous timing)
-      setTimeout(()=>{ overlay.classList.add('opened'); }, 600);
-      setTimeout(()=>{ overlay.classList.add('hidden'); if(video) video.pause(); document.body.style.overflow = ''; }, 4200);
-    });
-  </script>
 </body>
 </html>
