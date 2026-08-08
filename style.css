@@ -1012,37 +1012,3 @@ input,textarea,select{font-family:var(--font)}
 /* Ensure body transition is smooth */
 body{transition:background-color .5s var(--ease),color .5s var(--ease)}
 .light body{transition:background-color .5s var(--ease),color .5s var(--ease)}
-
-#intro-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-  z-index: 99999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.6s ease;
-}
-
-#intro-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#skip-btn {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  padding: 10px 22px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 25px;
-  cursor: pointer;
-  z-index: 100000;
-  font-size: 14px;
-}
