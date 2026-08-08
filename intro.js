@@ -1,19 +1,12 @@
-// intro.js — Three.js real-time intro (ES module)
-// Autoplay realtime intro. If a fractured GLB exists at /assets/slab_fractured.glb it will be used.
-// Otherwise the script falls back to a procedural slab made of many small shard meshes (no external model needed).
-// The logo is embedded as an inline SVG data URL, so no external image is required.
-
-import * as THREE from 'https://unpkg.com/three@0.152.0/build/three.module.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.152.0/examples/jsm/loaders/GLTFLoader.js';
-import { EffectComposer } from 'https://unpkg.com/three@0.152.0/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://unpkg.com/three@0.152.0/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'https://unpkg.com/three@0.152.0/examples/jsm/postprocessing/UnrealBloomPass.js';
+// intro.js — Three.js real-time intro (UMD loader friendly)
+// This version avoids top-level ES imports so bundlers (Rollup on Vercel) won't try to resolve CDNs during build.
+// It dynamically loads UMD builds of Three.js and example helpers at runtime in the browser.
 
 const canvas = document.getElementById('intro-canvas');
 const overlay = document.getElementById('intro-overlay');
-const skipBtn = document.getElementById('intro-skip');
 const appRoot = document.getElementById('app');
 
+let THREElib = null; // will hold global THREE
 let renderer, scene, camera, composer, clock;
 let shards = [];
 let slabRoot = null;
@@ -35,35 +28,57 @@ function isLowEnd() {
   return false;
 }
 
+function loadScript(src) {
+  return new Promise((res, rej) => {
+    if (document.querySelector(`script[src="${src}"]`)) return res();
+    const s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onload = () => res();
+    s.onerror = (e) => rej(new Error('Failed to load ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+async function loadThreeUMD() {
+  // Order matters: three first, then examples (they attach to THREE)
+  await loadScript('https://unpkg.com/three@0.152.0/build/three.min.js');
+  // examples/js attach to THREE (non-module UMD style)
+  await loadScript('https://unpkg.com/three@0.152.0/examples/js/loaders/GLTFLoader.js');
+  await loadScript('https://unpkg.com/three@0.152.0/examples/js/loaders/RGBELoader.js');
+  await loadScript('https://unpkg.com/three@0.152.0/examples/js/postprocessing/EffectComposer.js');
+  await loadScript('https://unpkg.com/three@0.152.0/examples/js/postprocessing/RenderPass.js');
+  await loadScript('https://unpkg.com/three@0.152.0/examples/js/postprocessing/UnrealBloomPass.js');
+  // Expose THREElib
+  THREElib = window.THREE;
+  if (!THREElib) throw new Error('THREE not found after loading scripts');
+}
+
 function initRenderer() {
-  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+  renderer = new THREElib.WebGLRenderer({ canvas, antialias: true, alpha: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   resize();
-  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.outputEncoding = THREElib.sRGBEncoding;
 }
 
 function initScene() {
-  scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
-  camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 200);
+  scene = new THREElib.Scene();
+  scene.background = new THREElib.Color(0x000000);
+  camera = new THREElib.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 200);
   camera.position.set(0, 0.65, 3.9);
-  clock = new THREE.Clock();
+  clock = new THREElib.Clock();
 
-  // Lights
-  const dir = new THREE.DirectionalLight(0xfff7e8, 0.9);
+  const dir = new THREElib.DirectionalLight(0xfff7e8, 0.9);
   dir.position.set(5, 10, 7);
   scene.add(dir);
-  scene.add(new THREE.AmbientLight(0xffffff, 0.25));
-
-  // subtle rim fill
-  const rim = new THREE.PointLight(0xffd78a, 0.35, 20);
+  scene.add(new THREElib.AmbientLight(0xffffff, 0.25));
+  const rim = new THREElib.PointLight(0xffd78a, 0.35, 20);
   rim.position.set(-4, 3, 6);
   scene.add(rim);
 
-  // composer + bloom
-  composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene, camera));
-  const bloom = new UnrealBloomPass(new THREE.Vector2(canvas.clientWidth, canvas.clientHeight), 0.9, 0.5, 0.1);
+  composer = new THREElib.EffectComposer(renderer);
+  composer.addPass(new THREElib.RenderPass(scene, camera));
+  const bloom = new THREElib.UnrealBloomPass(new THREElib.Vector2(canvas.clientWidth, canvas.clientHeight), 0.9, 0.5, 0.1);
   bloom.threshold = 0.13; bloom.strength = 0.7; bloom.radius = 0.9;
   composer.addPass(bloom);
 }
@@ -77,43 +92,29 @@ function resize() {
 }
 
 async function tryLoadGLB() {
+  // Attempt to fetch the GLB first via HEAD; if 404, return false
   try {
-    const loader = new GLTFLoader();
-    const gltf = await loader.loadAsync('/assets/slab_fractured.glb');
-    return gltf.scene;
+    const resp = await fetch('/assets/slab_fractured.glb', { method: 'HEAD' });
+    if (resp.ok) return true;
   } catch (e) {
-    console.warn('GLB load failed, falling back to procedural slab', e);
-    return null;
+    return false;
   }
+  return false;
 }
 
 function createProceduralSlab(cols = 12, rows = 6, gap = 0.002) {
-  // Create many small thin boxes arranged to look like a fractured slab.
-  const slab = new THREE.Group();
-  const width = 2.0; // world units for slab
-  const height = 1.0;
-  const thickness = 0.04;
-
-  const cellW = width / cols;
-  const cellH = height / rows;
-  const baseMat = new THREE.MeshPhysicalMaterial({
-    metalness: 0.0,
-    roughness: 0.02,
-    transmission: 0.96,
-    thickness: 0.8,
-    ior: 1.52,
-    envMapIntensity: 0.9,
-    clearcoat: 0.12,
-    clearcoatRoughness: 0.06,
-    color: new THREE.Color(0x0b0b0b)
+  const slab = new THREElib.Group();
+  const width = 2.0; const height = 1.0; const thickness = 0.04;
+  const cellW = width / cols; const cellH = height / rows;
+  const baseMat = new THREElib.MeshPhysicalMaterial({
+    metalness: 0.0, roughness: 0.02, transmission: 0.96, thickness: 0.8, ior: 1.52,
+    envMapIntensity: 0.9, clearcoat: 0.12, clearcoatRoughness: 0.06, color: new THREElib.Color(0x0b0b0b)
   });
-
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       const w = cellW * (0.7 + Math.random() * 0.6);
       const h = cellH * (0.7 + Math.random() * 0.6);
-      const geo = new THREE.BoxGeometry(w - gap, h - gap, thickness * (0.9 + Math.random() * 0.4));
-      // small vertex displacement for variety
+      const geo = new THREElib.BoxGeometry(w - gap, h - gap, thickness * (0.9 + Math.random() * 0.4));
       const posAttr = geo.attributes.position;
       for (let i = 0; i < posAttr.count; i++) {
         posAttr.setX(i, posAttr.getX(i) + (Math.random() - 0.5) * 0.002);
@@ -122,7 +123,7 @@ function createProceduralSlab(cols = 12, rows = 6, gap = 0.002) {
       }
       geo.computeVertexNormals();
       const m = baseMat.clone();
-      const mesh = new THREE.Mesh(geo, m);
+      const mesh = new THREElib.Mesh(geo, m);
       const px = (x + 0.5 - cols / 2) * cellW;
       const py = (y + 0.5 - rows / 2) * cellH;
       mesh.position.set(px + (Math.random() - 0.5) * 0.01, py + (Math.random() - 0.5) * 0.01, 0);
@@ -130,24 +131,20 @@ function createProceduralSlab(cols = 12, rows = 6, gap = 0.002) {
       mesh.userData.orig = mesh.position.clone();
       mesh.userData.target = mesh.position.clone();
       slab.add(mesh);
-      shards.push({ mesh, orig: mesh.position.clone(), vel: new THREE.Vector3(), target: mesh.position.clone() });
+      shards.push({ mesh, orig: mesh.position.clone(), vel: new THREElib.Vector3(), target: mesh.position.clone() });
     }
   }
-  // add subtle base plane reflection under slab for realism
-  const baseGeo = new THREE.PlaneGeometry(width * 1.2, height * 1.2);
-  const baseMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.05 });
-  const base = new THREE.Mesh(baseGeo, baseMat);
+  const baseGeo = new THREElib.PlaneGeometry(width * 1.2, height * 1.2);
+  const baseMat = new THREElib.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.05 });
+  const base = new THREElib.Mesh(baseGeo, baseMat);
   base.rotation.x = -Math.PI / 2;
   base.position.set(0, -0.5, -thickness);
   slab.add(base);
-
-  // Slightly scale slab so it fits camera view
   slab.scale.setScalar(0.9);
   return slab;
 }
 
 function spawnLogoInline() {
-  // Inline SVG (gold logo). We create a data URL and load it as a texture.
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
   <svg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'>
     <defs>
@@ -161,25 +158,27 @@ function spawnLogoInline() {
     </g>
   </svg>`;
   const encoded = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-  const loader = new THREE.TextureLoader();
-  loader.load(encoded, (tx) => {
-    tx.encoding = THREE.sRGBEncoding;
-    const mat = new THREE.MeshBasicMaterial({ map: tx, transparent: true, opacity: 0 });
-    const aspect = tx.image ? tx.image.width / tx.image.height : 2.2;
+  const img = new Image();
+  img.onload = () => {
+    const tx = new THREElib.Texture(img);
+    tx.encoding = THREElib.sRGBEncoding;
+    const mat = new THREElib.MeshBasicMaterial({ map: tx, transparent: true, opacity: 0 });
+    const aspect = img.width / img.height || 2.2;
     const h = 0.45; const w = h * aspect;
-    const geo = new THREE.PlaneGeometry(w, h);
-    logoMesh = new THREE.Mesh(geo, mat);
+    const geo = new THREElib.PlaneGeometry(w, h);
+    logoMesh = new THREElib.Mesh(geo, mat);
     logoMesh.position.set(0, 0.02, 0.06);
     scene.add(logoMesh);
-  }, undefined, () => { console.warn('logo load failed'); });
+  };
+  img.src = encoded;
 }
 
 function explode() {
   shards.forEach(s => {
-    const dir = new THREE.Vector3((Math.random() - 0.5) * 2, (Math.random() - 0.2) * 1.6, (Math.random() - 0.5) * 2).normalize();
+    const dir = new THREElib.Vector3((Math.random() - 0.5) * 2, (Math.random() - 0.2) * 1.6, (Math.random() - 0.5) * 2).normalize();
     const p = 0.5 + Math.random() * 1.1;
     s.vel.copy(dir.multiplyScalar(p * THRUST));
-    s.mesh.userData.spin = new THREE.Vector3(Math.random()*2, Math.random()*2, Math.random()*2);
+    s.mesh.userData.spin = new THREElib.Vector3(Math.random()*2, Math.random()*2, Math.random()*2);
   });
 }
 
@@ -192,8 +191,8 @@ function updateShards(dt) {
       s.mesh.rotation.z += (s.mesh.userData.spin?.z || 0) * dt;
       s.vel.multiplyScalar(Math.pow(FRICTION, dt*60));
     } else if (state === 'gather' || state === 'reveal') {
-      const to = new THREE.Vector3().subVectors(s.target, s.mesh.position);
-      const swirl = new THREE.Vector3(-to.z, 0, to.x).multiplyScalar(0.08);
+      const to = new THREElib.Vector3().subVectors(s.target, s.mesh.position);
+      const swirl = new THREElib.Vector3(-to.z, 0, to.x).multiplyScalar(0.08);
       const force = to.multiplyScalar(MAGNET * dt).add(swirl.multiplyScalar(dt*10));
       s.vel.add(force);
       s.vel.multiplyScalar(Math.pow(FRICTION, dt*20));
@@ -245,41 +244,50 @@ function endIntro() {
 }
 
 async function main() {
-  // Autoplay without user click. If device is low-end, skip automatically.
   if (isLowEnd()) {
     overlay.style.display = 'none';
     appRoot?.classList.add('visible');
     return;
   }
 
+  await loadThreeUMD();
   initRenderer();
   initScene();
   window.addEventListener('resize', resize);
 
-  // Try to load GLB; fallback to procedural slab if none
-  const glb = await tryLoadGLB();
-  if (glb) {
-    slabRoot = glb;
-    // apply glass material to meshes
-    slabRoot.traverse((c) => {
-      if (c.isMesh) {
-        c.material = new THREE.MeshPhysicalMaterial({ metalness:0.0, roughness:0.02, transmission:0.98, thickness:0.9, ior:1.52, envMapIntensity:1.0, clearcoat:0.15, clearcoatRoughness:0.05, color:new THREE.Color(0x0b0b0b) });
-        c.userData.orig = c.position.clone();
-        shards.push({ mesh: c, orig: c.position.clone(), vel: new THREE.Vector3(), target: c.position.clone() });
-      }
+  const hasGlb = await tryLoadGLB();
+  if (hasGlb && window.THREE && window.THREE.GLTFLoader) {
+    // load glb using THREE.GLTFLoader
+    const loader = new THREElib.GLTFLoader();
+    loader.load('/assets/slab_fractured.glb', (gltf) => {
+      slabRoot = gltf.scene;
+      slabRoot.traverse((c) => {
+        if (c.isMesh) {
+          c.material = new THREElib.MeshPhysicalMaterial({ metalness:0.0, roughness:0.02, transmission:0.98, thickness:0.9, ior:1.52, envMapIntensity:1.0, clearcoat:0.15, clearcoatRoughness:0.05, color:new THREElib.Color(0x0b0b0b) });
+          c.userData.orig = c.position.clone();
+          shards.push({ mesh: c, orig: c.position.clone(), vel: new THREElib.Vector3(), target: c.position.clone() });
+        }
+      });
+      scene.add(slabRoot);
+      spawnLogoInline();
+      clock.start();
+      requestAnimationFrame(function loop(){ animate(); });
+    }, undefined, (e) => {
+      console.warn('GLB load error, falling back', e);
+      const slab = createProceduralSlab(12,6);
+      scene.add(slab);
+      spawnLogoInline();
+      clock.start();
+      requestAnimationFrame(function loop(){ animate(); });
     });
-    scene.add(slabRoot);
   } else {
-    // build procedural slab
-    const slab = createProceduralSlab(12, 6);
-    slabRoot = slab;
-    scene.add(slabRoot);
+    const slab = createProceduralSlab(12,6);
+    scene.add(slab);
+    spawnLogoInline();
+    clock.start();
+    requestAnimationFrame(function loop(){ animate(); });
   }
-
-  spawnLogoInline();
-  clock.start();
-  requestAnimationFrame(function loop(){ animate(); });
 }
 
-skipBtn.addEventListener('click', endIntro);
-main();
+// Start autoplay
+main().catch(err => { console.error('Intro failed', err); overlay.style.display = 'none'; appRoot?.classList.add('visible'); });
