@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta id="meta-desc" name="description" content="البريق للزجاج والمرايا - حلول متكاملة في الزجاج السيكوريت والمرايات وواجهات الم[...]" />
-  <meta id="meta-keywords" name="keywords" content="زجاج سيكوريت, مرايات, واجهات محلات, كبائن شاور, درابزين زجاج, قواطع زجاج, ستانلس[...]" />
+  <meta id="meta-keywords" name="keywords" content="زجاج سيكوريت, مرايات, واجهات محلات, كبائن شاور, درابزين زجاج, قواطع زجاج, ستانلس[.[...]" />
   <meta name="robots" content="index, follow" />
   <link id="meta-canonical" rel="canonical" href="https://albariqglass.com/" />
 
   <!-- Open Graph -->
   <meta id="og-title" property="og:title" content="البريق للزجاج والمرايا | حلول زجاج متكاملة في مصر" />
-  <meta id="og-desc" property="og:description" content="حلول متكاملة في تصميم وتصنيع وتركيب الزجاج السيكوريت والمرايات وواجهات المح[...]" />
+  <meta id="og-desc" property="og:description" content="حلول متكاملة في تصميم وتصنيع وتركيب الزجاج السيكوريت والمرايات وواجهات المح[...]]" />
   <meta property="og:type" content="website" />
   <meta id="og-url" property="og:url" content="https://albariqglass.com/" />
   <meta property="og:site_name" content="البريق للزجاج والمرايا" />
@@ -65,7 +65,7 @@
   <link rel="stylesheet" href="style.css" />
 
   <!-- Intro CSS (glass / cinematic) -->
-  <link rel="stylesheet" href="/intro.css" />
+  <!-- Removed missing /intro.css to avoid Vite build resolution error -->
 </head>
 <body>
 
@@ -84,8 +84,8 @@
   </button>
 
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/201118049615?text=مرحباً، أريد الاستفسار عن خدمات البريق للزجاج والمرايا" id="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15[...]"/></svg>
+  <a href="https://wa.me/201118049615?text=مرحباً، أريد الاستفسار عن خدمات البريق للزجاج والمرايا" id="whatsapp-float" target="_blank" rel="noopener [...]">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15[[...]"></path></svg>
     <span>واتساب</span>
   </a>
 
@@ -149,7 +149,7 @@
     <div id="lightbox-container">
       <img id="lightbox-img" src="" alt="" />
       <p id="lightbox-caption"></p>
-      <button id="lightbox-close" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button id="lightbox-close" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="[...]"></line></svg></button>
       <button id="lightbox-prev" aria-label="السابق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
       <button id="lightbox-next" aria-label="التالي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
@@ -160,6 +160,6 @@
 
   <!-- Intro module (React + Framer Motion via CDN) -->
 
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
