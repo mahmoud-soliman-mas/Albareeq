@@ -82,6 +82,27 @@
 </div>
 <!-- نهاية مقدمة البريق -->
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const glassIntro = document.getElementById('glass-intro');
+      const skipBtn = document.getElementById('skip-intro-btn');
+
+      function closeIntro() {
+        if (glassIntro) {
+          glassIntro.classList.add('intro-hidden');
+        }
+      }
+
+      // إخفاء المقدمة تلقائياً بعد 3.2 ثواني
+      setTimeout(closeIntro, 3200);
+
+      // إخفاء عند الضغط على زر التخطي
+      if (skipBtn) {
+        skipBtn.addEventListener('click', closeIntro);
+      }
+    });
+  </script>
+
   <!-- Loading Progress Bar -->
   <div id="progress-bar"></div>
 
