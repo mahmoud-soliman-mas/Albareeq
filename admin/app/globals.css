@@ -23,6 +23,8 @@ body {
   min-height: 100vh;
   background: radial-gradient(circle at top, rgba(229,194,107,0.12), transparent 25%),
     linear-gradient(180deg, #05070d 0%, #0b1221 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::before {
@@ -74,6 +76,8 @@ textarea {
 .glass-card {
   background: rgba(15,23,42,0.78);
   border: 1px solid rgba(255,255,255,0.08);
+  /* Provide both standard and webkit-prefixed backdrop filter for broader support */
+  -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
 }
 
