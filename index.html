@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<div id="intro-container">
-  <video id="intro-video" autoplay muted playsinline>
-    <source src="/intro-video.mp4" type="video/mp4">
-  </video>
-  <button id="skip-btn">تخطي المقدمة</button>
-</div>    متصفحك لا يدعم تشغيل الفيديو.
-  </video>
-  <button id="skip-btn">تخطي المقدمة</button>
-</div>.mp4" type="video/mp4">
-    متصفحك لا يدعم تشغيل الفيديو.
-  </video>
-  <button id="skip-btn">تخطي المقدمة</button>
-</div>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,30 +67,7 @@
 
 </head>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const introContainer = document.getElementById('intro-container');
-      const introVideo = document.getElementById('intro-video');
-      const skipBtn = document.getElementById('skip-btn');
-
-      function hideIntro() {
-        if (!introContainer) return;
-        introContainer.style.opacity = '0';
-        setTimeout(() => {
-          introContainer.style.display = 'none';
-        }, 600);
-      }
-
-      if (introVideo) {
-        introVideo.addEventListener('ended', hideIntro);
-      }
-
-      if (skipBtn) {
-        skipBtn.addEventListener('click', hideIntro);
-      }
-    });
-  </script>
-</body>
+ </body>
 </html>
   
 <body>
