@@ -79,6 +79,33 @@
   <link rel="stylesheet" href="style.css" />
 
 </head>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const introContainer = document.getElementById('intro-container');
+      const introVideo = document.getElementById('intro-video');
+      const skipBtn = document.getElementById('skip-btn');
+
+      function hideIntro() {
+        if (!introContainer) return;
+        introContainer.style.opacity = '0';
+        setTimeout(() => {
+          introContainer.style.display = 'none';
+        }, 600);
+      }
+
+      if (introVideo) {
+        introVideo.addEventListener('ended', hideIntro);
+      }
+
+      if (skipBtn) {
+        skipBtn.addEventListener('click', hideIntro);
+      }
+    });
+  </script>
+</body>
+</html>
+  
 <body>
 
   <!-- Loading Progress Bar -->
