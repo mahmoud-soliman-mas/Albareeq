@@ -1,0 +1,20 @@
+{
+  "name": "البريق - لوحة تحكم الإدارة",
+  "short_name": "البريق",
+  "start_url": "/admin",
+  "display": "standalone",
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
