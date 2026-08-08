@@ -1012,3 +1012,99 @@ input,textarea,select{font-family:var(--font)}
 /* Ensure body transition is smooth */
 body{transition:background-color .5s var(--ease),color .5s var(--ease)}
 .light body{transition:background-color .5s var(--ease),color .5s var(--ease)}
+
+
+/* تنسيقات مقدمة البريق */
+#glass-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #1a2332 0%, #090d14 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  animation: fadeInZoom 1.2s ease-out forwards;
+}
+
+.brand-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.brand-sub {
+  font-size: 1.2rem;
+  color: #c5a880; /* لون ذهبي زجاجي يناسب الفخامة */
+  margin-top: 8px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.loading-bar-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.loading-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #c5a880, #ffffff);
+  animation: loadProgress 3s linear forwards;
+}
+
+#skip-intro-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+#skip-intro-btn:hover {
+  color: #fff;
+  border-color: #c5a880;
+  background: rgba(197, 168, 128, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInZoom {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes loadProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.intro-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
