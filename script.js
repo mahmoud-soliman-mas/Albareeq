@@ -5,7 +5,6 @@
 
 /* ============================================================
    DATA
-   
 ============================================================ */
 
 const PHONE = '+201118049615';
@@ -138,7 +137,7 @@ function renderFooter() {
             <li><a data-link data-href="/projects">مشاريعنا</a></li>
             <li><a data-link data-href="/gallery">معرض الأعمال</a></li>
             <li><a data-link data-href="/about">عن الشركة</a></li>
-            <li><a data-link data-href="/admin">لوحة التحكم</a></li>
+            <li><a href="http://localhost:3005/admin/login" target="_blank" rel="noopener">لوحة التحكم</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -205,7 +204,7 @@ function ctaBanner(title, desc) {
                 <span>اتصل الآن</span>
               </a>
               <a href="${WA}" target="_blank" rel="noopener" class="btn btn-wa">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 <span>واتساب</span>
               </a>
             </div>
@@ -932,6 +931,78 @@ function pageAboutCompany() {
   `;
 }
 
+/* ---- QUALITY ---- */
+function pageQuality() {
+  updateSEO('الجودة | البريق للزجاج والمرايا', 'تعرف على معايير الجودة في البريق للزجاج والمرايا - من اختيار الخامات إلى دقة القياسات والتنفيذ الاحترافي والمراجعة قبل التسليم.', '/quality');
+  return `
+    <section class="hero-glass">
+      <div class="hg-bg" style="background-image:url('${IMG.arch4}')"></div>
+      <div class="hg-shapes">
+        <div class="hg-shape" style="width:300px;height:300px;top:10%;right:5%;animation-duration:22s"></div>
+        <div class="hg-shape" style="width:200px;height:200px;bottom:15%;left:10%;animation-duration:18s;animation-direction:reverse"></div>
+      </div>
+      <div class="hg-content">
+        <div class="rv rv-right">
+          ${breadcrumb([{label:'الرئيسية',href:'/'},{label:'الجودة',href:'/quality'}])}
+          <div class="s-label">الجودة والالتزام</div>
+          <h1 class="s-title" style="font-size:clamp(2rem,4vw,3rem)">الجودة هي أساس <span class="gold">كل مشروع</span></h1>
+          <p class="s-sub">في البريق للزجاج والمرايا نؤمن أن جودة العمل لا تعتمد على المنتج فقط، بل تشمل جميع مراحل التنفيذ. لهذا نحرص على اتباع خطوات عمل واضحة تساعدنا على تقديم نتائج تلبي توقعات عملائنا.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pad">
+      <div class="wrap">
+        <div class="qual-pillars">
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z')}</div>
+            <h3>اختيار الخامات</h3>
+            <p>نستخدم خامات زجاج وإكسسوارات مناسبة لطبيعة الاستخدام، مع مراعاة الجودة والمتانة والشكل النهائي، حتى نحصل على نتيجة تجمع بين الأداء والمظهر الأنيق.</p>
+            <div class="pbar-label"><span>جودة الخامات</span><span class="gold">95%</span></div>
+            <div class="pbar"><div class="pbar-fill" data-width="95"></div></div>
+          </div>
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z')}</div>
+            <h3>دقة القياسات</h3>
+            <p>القياسات الدقيقة من أهم عوامل نجاح أي مشروع زجاج. لذلك نهتم بمراجعة المقاسات قبل بدء التصنيع لتقليل احتمالية حدوث أي اختلاف أثناء التركيب.</p>
+            <div class="pbar-label"><span>دقة التنفيذ</span><span class="gold">98%</span></div>
+            <div class="pbar"><div class="pbar-fill" data-width="98"></div></div>
+          </div>
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4')}</div>
+            <h3>تنفيذ احترافي</h3>
+            <p>يتم تنفيذ أعمال التركيب بواسطة فنيين ذوي خبرة، مع الالتزام بالخطوات الفنية المناسبة لكل نوع من أنواع الزجاج والمرايات، والاهتمام بالتشطيب النهائي.</p>
+            <div class="pbar-label"><span>رضا العملاء</span><span class="gold">97%</span></div>
+            <div class="pbar"><div class="pbar-fill" data-width="97"></div></div>
+          </div>
+          <div class="qual-pillar gc rv rv-up">
+            <div class="qp-icon">${svgIcon('M22 11.08V12a10 10 0 1 1-5.93-9.14 M22 4 12 14.01 9 11.01')}</div>
+            <h3>مراجعة قبل التسليم</h3>
+            <p>قبل تسليم أي مشروع، نقوم بمراجعة العمل للتأكد من سلامة التركيب، وثبات الزجاج والإكسسوارات، وجودة التشطيب، ونظافة موقع العمل، ومطابقة التنفيذ لما تم الاتفاق عليه.</p>
+            <div class="pbar-label"><span>الالتزام بالمواصفات</span><span class="gold">100%</span></div>
+            <div class="pbar"><div class="pbar-fill" data-width="100"></div></div>
+          </div>
+        </div>
+
+        <div class="pad-sm">
+          <div class="s-head rv rv-up">
+            <h2 class="s-title">مراحل ضمان <span class="gold">الجودة</span></h2>
+          </div>
+          <div class="qual-timeline">
+            <div class="qt-item rv rv-up"><div class="qt-num">١</div><div class="qt-body gc"><h3>المعاينة وأخذ القياسات</h3><p>نبدأ بمعاينة الموقع وأخذ القياسات الدقيقة لضمان التنفيذ الصحيح</p></div></div>
+            <div class="qt-item rv rv-up"><div class="qt-num">٢</div><div class="qt-body gc"><h3>اختيار الخامات المناسبة</h3><p>نختار الزجاج والإكسسوارات التي تتوافق مع طبيعة المشروع ومتطلبات العميل</p></div></div>
+            <div class="qt-item rv rv-up"><div class="qt-num">٣</div><div class="qt-body gc"><h3>التصنيع الدقيق</h3><p>يتم التصنيع وفق المقاسات والمواصفات المحددة بدقة عالية</p></div></div>
+            <div class="qt-item rv rv-up"><div class="qt-num">٤</div><div class="qt-body gc"><h3>التركيب الاحترافي</h3><p>يتولى فريقنا المتخصص التركيب مع الاهتمام بأدق التفاصيل والتشطيب النهائي</p></div></div>
+            <div class="qt-item rv rv-up"><div class="qt-num">٥</div><div class="qt-body gc"><h3>المراجعة والتسليم</h3><p>مراجعة شاملة قبل التسليم للتأكد من مطابقة العمل لجميع المواصفات المتفق عليها</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    ${ctaBanner('الجودة التي تستحقها', 'لا نقدم خدماتنا فقط، بل نقدم التزاماً بالجودة والدقة. تواصل معنا لتجربة الفرق.')}
+  `;
+}
+
 /* ---- WHY US ---- */
 function pageWhyUs() {
   updateSEO('لماذا نحن | البريق للزجاج والمرايا', 'تعرف على أسباب اختيار العملاء للبريق للزجاج والمرايا - دقة التنفيذ، جودة الخامات، الالتزام بالمواعيد، وخدمة عملاء تهتم بك.', '/why-us');
@@ -1330,106 +1401,21 @@ function pageContact() {
   `;
 }
 
-/* ---- ADMIN ---- */
-function pageAdmin() {
-  updateSEO('لوحة التحكم | البريق للزجاج والمرايا', 'لوحة تحكم الإدارة - إدارة طلبات العملاء والرسائل.', '/admin');
-  const isLoggedIn = sessionStorage.getItem('albariq-admin') === 'true';
-  if (!isLoggedIn) return pageAdminLogin();
-  return pageAdminDashboard();
-}
-
-function pageAdminLogin() {
-  return `
-    <section class="admin-login-wrap">
-      <div class="admin-login-card gc rv rv-up">
-        <div class="admin-login-logo">
-          <img src="/logo.png" alt="البريق للزجاج والمرايا" style="height:60px;margin:0 auto" />
-        </div>
-        <h1 class="admin-login-title">لوحة تحكم الإدارة</h1>
-        <p class="admin-login-sub">البريق للزجاج والمرايا</p>
-        <form id="adminLoginForm" novalidate>
-          <div class="form-g">
-            <label>كلمة المرور <span class="req">*</span></label>
-            <input type="password" id="adminPass" placeholder="أدخل كلمة المرور" required dir="ltr" />
-            <span class="ferr" id="adminPassErr"></span>
-          </div>
-          <button type="submit" class="btn btn-gold btn-submit" id="adminLoginBtn">
-            <span id="adminLoginText">تسجيل الدخول</span>
-            <div id="adminLoginSpinner" style="display:none"><div class="spinner"></div></div>
-          </button>
-          <div class="admin-login-err" id="adminLoginErr" style="display:none">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <span>كلمة المرور غير صحيحة</span>
-          </div>
-        </form>
-        <a data-link data-href="/" class="admin-back-link">العودة للموقع</a>
-      </div>
-    </section>
-  `;
-}
-
-function pageAdminDashboard() {
-  return `
-    <section class="admin-dash">
-      <div class="admin-header gc">
-        <div class="admin-header-left">
-          <img src="/logo.png" alt="البريق" style="height:42px" />
-          <div>
-            <h1>لوحة التحكم</h1>
-            <p>البريق للزجاج والمرايا</p>
-          </div>
-        </div>
-        <button class="btn btn-outline btn-sm" id="adminLogoutBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9"/></svg>
-          <span>تسجيل الخروج</span>
-        </button>
-      </div>
-
-      <div class="admin-stats">
-        <div class="admin-stat-card gc rv rv-up">
-          <div class="asc-icon">${svgIcon('M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z')}</div>
-          <div class="asc-body"><span class="asc-num" id="statTotal">0</span><span class="asc-label">إجمالي الطلبات</span></div>
-        </div>
-        <div class="admin-stat-card gc rv rv-up">
-          <div class="asc-icon">${svgIcon('M12 22a10 10 0 1 0 10 10 M12 8v4l3 3')}</div>
-          <div class="asc-body"><span class="asc-num" id="statNew">0</span><span class="asc-label">طلبات جديدة</span></div>
-        </div>
-        <div class="admin-stat-card gc rv rv-up">
-          <div class="asc-icon">${svgIcon('M22 11.08V12a10 10 0 1 1-5.93-9.14 M22 4 12 14.01 9 11.01')}</div>
-          <div class="asc-body"><span class="asc-num" id="statDone">0</span><span class="asc-label">طلبات مكتملة</span></div>
-        </div>
-        <div class="admin-stat-card gc rv rv-up">
-          <div class="asc-icon">${svgIcon('M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 10a3 3 0 1 0-6 0 3 3 0 0 0 6 0z')}</div>
-          <div class="asc-body"><span class="asc-num" id="statAreas">0</span><span class="asc-label">مناطق الخدمة</span></div>
-        </div>
-      </div>
-
-      <div class="admin-table-wrap gc rv rv-up">
-        <div class="admin-table-head">
-          <h2>طلبات العملاء</h2>
-          <div class="admin-filter-row">
-            <button class="admin-f-btn active" data-status="all">الكل</button>
-            <button class="admin-f-btn" data-status="new">جديد</button>
-            <button class="admin-f-btn" data-status="contacted">تم التواصل</button>
-            <button class="admin-f-btn" data-status="done">مكتمل</button>
-          </div>
-        </div>
-        <div class="admin-loading" id="adminLoading">
-          <div class="spinner" style="margin:0 auto"></div>
-          <p>جارٍ تحميل الطلبات...</p>
-        </div>
-        <div id="adminTableBody"></div>
-        <div class="admin-empty" id="adminEmpty" style="display:none">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:48px;height:48px;opacity:.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M16 13H8 M16 17H8 M10 9H8"/></svg>
-          <h3>لا توجد طلبات بعد</h3>
-          <p>ستظهر هنا طلبات العملاء المرسلة من نموذج التواصل</p>
-        </div>
-      </div>
-    </section>
-  `;
-}
-
 /* ---- 404 ---- */
+function pageAdminRedirect() {
+  window.location.href = 'http://localhost:3005/admin/login';
+  return `
+    <section style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding-top:var(--nav-h);text-align:center">
+      <div class="wrap rv rv-up" style="max-width:720px;">
+        <div class="s-label">Admin</div>
+        <h1 class="s-title" style="font-size:clamp(2.6rem,6vw,4rem)">لوحة تحكم الإدارة</h1>
+        <p class="s-sub" style="margin:0 auto 32px;max-width:640px;">إذا لم يتم التحويل تلقائيًا، اضغط على الرابط التالي.</p>
+        <a href="http://localhost:3005/admin/login" class="btn btn-gold" target="_blank" rel="noopener">فتح لوحة التحكم</a>
+      </div>
+    </section>
+  `;
+}
+
 function pageNotFound() {
   updateSEO('الصفحة غير موجودة | البريق للزجاج والمرايا', 'عذراً، الصفحة التي تبحث عنها غير موجودة. العودة للصفحة الرئيسية.', '/404');
   return `
@@ -1457,12 +1443,12 @@ const routes = {
   '/gallery': pageGallery,
   '/about': pageAboutCompany,
   '/quality': pageAboutCompany,
-  '/why-us': pageWhyUs,
-  '/faq': pageFAQ,
+  '/why-us': pageAboutCompany,
+  '/faq': pageAboutCompany,
   '/areas': pageAreas,
   '/maintenance': pageMaintenance,
   '/contact': pageContact,
-  '/admin': pageAdmin,
+  '/admin': pageAdminRedirect,
 };
 
 const dynamicRoutes = [
@@ -1504,7 +1490,6 @@ function router() {
   initContactForm();
   initLightboxTriggers();
   updateNavActive(path);
-  initAdminPage();
 }
 
 /* ============================================================
@@ -1703,21 +1688,8 @@ function initContactForm() {
 
     const name = fields.name.el.value.trim();
     const phone = fields.phone.el.value.trim();
-    const city = $('#city') ? $('#city').value : '';
     const service = fields.service.el.value;
     const message = fields.message.el.value.trim();
-
-    try {
-      const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-      const supabaseUrl = window.SUPABASE_URL || '';
-      const supabaseKey = window.SUPABASE_ANON_KEY || '';
-      if (supabaseUrl && supabaseKey) {
-        const sb = createClient(supabaseUrl, supabaseKey);
-        await sb.from('contact_requests').insert({ name, phone, city, service, message, status: 'new' });
-      }
-    } catch (err) {
-      // Continue even if DB save fails — WhatsApp still works
-    }
 
     const whatsappMessage = `*طلب عرض سعر جديد*
 
@@ -1727,247 +1699,22 @@ ${name}
 📞 رقم الهاتف:
 ${phone}
 
-🏙️ المدينة:
-${city || 'غير محدد'}
-
 🛠️ الخدمة المطلوبة:
 ${service}
 
 📝 تفاصيل الطلب:
 ${message}`;
 
-    window.open(
+window.open(
       `https://wa.me/201118049615?text=${encodeURIComponent(whatsappMessage)}`,
       '_blank'
     );
-
-    form.style.display = 'none';
-    $('#formSuccess').style.display = 'block';
 
     btn.disabled = false;
     txt.style.display = 'inline';
     spin.style.display = 'none';
 
     form.reset();
-  });
-}
-
-/* ============================================================
-   ADMIN PAGE LOGIC
-============================================================ */
-async function initAdminPage() {
-  // Login form
-  const loginForm = $('#adminLoginForm');
-  if (loginForm) {
-    const passInput = $('#adminPass');
-    const passErr = $('#adminPassErr');
-    const btn = $('#adminLoginBtn');
-    const txt = $('#adminLoginText');
-    const spin = $('#adminLoginSpinner');
-    const errBox = $('#adminLoginErr');
-
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const pass = passInput.value.trim();
-      if (!pass) {
-        passErr.textContent = 'يرجى إدخال كلمة المرور';
-        passInput.classList.add('err');
-        return;
-      }
-      passErr.textContent = '';
-      passInput.classList.remove('err');
-
-      btn.disabled = true;
-      txt.style.display = 'none';
-      spin.style.display = 'flex';
-      errBox.style.display = 'none';
-
-      await new Promise(r => setTimeout(r, 500));
-
-      const ADMIN_PASSWORD = 'albariq2025';
-      if (pass === ADMIN_PASSWORD) {
-        sessionStorage.setItem('albariq-admin', 'true');
-        router();
-      } else {
-        errBox.style.display = 'flex';
-        btn.disabled = false;
-        txt.style.display = 'inline';
-        spin.style.display = 'none';
-      }
-    });
-    return;
-  }
-
-  // Dashboard
-  const logoutBtn = $('#adminLogoutBtn');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-      sessionStorage.removeItem('albariq-admin');
-      router();
-    });
-
-    // Load stats
-    loadAdminStats();
-    loadAdminRequests('all');
-
-    // Filter buttons
-    $$('.admin-f-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        $$('.admin-f-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const status = btn.getAttribute('data-status');
-        loadAdminRequests(status);
-      });
-    });
-  }
-}
-
-let adminRequests = [];
-
-async function loadAdminStats() {
-  const totalEl = $('#statTotal');
-  const newEl = $('#statNew');
-  const doneEl = $('#statDone');
-  const areasEl = $('#statAreas');
-  if (!totalEl) return;
-
-  try {
-    const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-    const supabaseUrl = window.SUPABASE_URL || '';
-    const supabaseKey = window.SUPABASE_ANON_KEY || '';
-    if (!supabaseUrl || !supabaseKey) {
-      totalEl.textContent = '0';
-      newEl.textContent = '0';
-      doneEl.textContent = '0';
-      areasEl.textContent = String(AREAS.length);
-      return;
-    }
-    const sb = createClient(supabaseUrl, supabaseKey);
-    const { data, error } = await sb.from('contact_requests').select('id,status');
-    if (error) throw error;
-    const all = data || [];
-    totalEl.textContent = String(all.length);
-    newEl.textContent = String(all.filter(r => r.status === 'new').length);
-    doneEl.textContent = String(all.filter(r => r.status === 'done').length);
-    areasEl.textContent = String(AREAS.length);
-  } catch (err) {
-    totalEl.textContent = '0';
-    newEl.textContent = '0';
-    doneEl.textContent = '0';
-    areasEl.textContent = String(AREAS.length);
-  }
-}
-
-async function loadAdminRequests(statusFilter) {
-  const body = $('#adminTableBody');
-  const loading = $('#adminLoading');
-  const empty = $('#adminEmpty');
-  if (!body) return;
-
-  body.innerHTML = '';
-  loading.style.display = 'flex';
-  empty.style.display = 'none';
-
-  try {
-    const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-    const supabaseUrl = window.SUPABASE_URL || '';
-    const supabaseKey = window.SUPABASE_ANON_KEY || '';
-    if (!supabaseUrl || !supabaseKey) {
-      loading.style.display = 'none';
-      empty.style.display = 'flex';
-      return;
-    }
-    const sb = createClient(supabaseUrl, supabaseKey);
-    const { data, error } = await sb.from('contact_requests').select('*').order('created_at', { ascending: false });
-    if (error) throw data;
-    adminRequests = data || [];
-    loading.style.display = 'none';
-
-    const filtered = statusFilter === 'all' ? adminRequests : adminRequests.filter(r => r.status === statusFilter);
-
-    if (filtered.length === 0) {
-      empty.style.display = 'flex';
-      return;
-    }
-
-    body.innerHTML = filtered.map(r => adminRequestRow(r)).join('');
-    bindAdminRowActions();
-  } catch (err) {
-    loading.style.display = 'none';
-    empty.style.display = 'flex';
-  }
-}
-
-function adminRequestRow(r) {
-  const statusLabels = { new: 'جديد', contacted: 'تم التواصل', done: 'مكتمل' };
-  const statusClasses = { new: 'rs-new', contacted: 'rs-contacted', done: 'rs-done' };
-  const date = r.created_at ? new Date(r.created_at).toLocaleString('ar-EG', { dateStyle: 'short', time_style: 'short' }) : '';
-  return `
-    <div class="admin-row" data-id="${r.id}">
-      <div class="ar-main">
-        <div class="ar-top">
-          <span class="ar-name">${esc(r.name || '')}</span>
-          <span class="ar-status ${statusClasses[r.status] || 'rs-new'}">${statusLabels[r.status] || r.status}</span>
-        </div>
-        <div class="ar-details">
-          <span class="ar-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>${esc(r.phone || '')}</span>
-          ${r.city ? `<span class="ar-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${esc(r.city)}</span>` : ''}
-          ${r.service ? `<span class="ar-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>${esc(r.service)}</span>` : ''}
-        </div>
-        ${r.message ? `<p class="ar-message">${esc(r.message)}</p>` : ''}
-        <span class="ar-date">${date}</span>
-      </div>
-      <div class="ar-actions">
-        <a href="https://wa.me/${(r.phone || '').replace(/[^0-9]/g, '')}" target="_blank" rel="noopener" class="ar-action-btn ar-wa" title="واتساب">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
-        </a>
-        <button class="ar-action-btn ar-status" data-id="${r.id}" data-status="contacted" title="تم التواصل">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </button>
-        <button class="ar-action-btn ar-done" data-id="${r.id}" data-status="done" title="مكتمل">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        </button>
-        <button class="ar-action-btn ar-delete" data-id="${r.id}" title="حذف">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-async function bindAdminRowActions() {
-  $$('.ar-status, .ar-done').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const id = btn.getAttribute('data-id');
-      const status = btn.getAttribute('data-status');
-      try {
-        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-        const sb = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-        await sb.from('contact_requests').update({ status }).eq('id', id);
-        loadAdminStats();
-        const activeFilter = $$('.admin-f-btn.active')[0]?.getAttribute('data-status') || 'all';
-        loadAdminRequests(activeFilter);
-      } catch (err) {
-        // ignore
-      }
-    });
-  });
-
-  $$('.ar-delete').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const id = btn.getAttribute('data-id');
-      if (!confirm('هل أنت متأكد من حذف هذا الطلب؟')) return;
-      try {
-        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-        const sb = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-        await sb.from('contact_requests').delete().eq('id', id);
-        loadAdminStats();
-        const activeFilter = $$('.admin-f-btn.active')[0]?.getAttribute('data-status') || 'all';
-        loadAdminRequests(activeFilter);
-      } catch (err) {
-        // ignore
-      }
-    });
   });
 }
 
