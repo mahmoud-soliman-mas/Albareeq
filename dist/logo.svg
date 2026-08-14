@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Al-Bariq Glass logo</title>
+  <desc id="desc">Transparent glass and steel architectural brand logo inspired by the provided concept.</desc>
+
+  <defs>
+    <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5fbff"/>
+      <stop offset="12%" stop-color="#dfeaf7"/>
+      <stop offset="30%" stop-color="#b0bfcd"/>
+      <stop offset="50%" stop-color="#f1f5fb"/>
+      <stop offset="70%" stop-color="#a0adbf"/>
+      <stop offset="100%" stop-color="#e9f3ff"/>
+    </linearGradient>
+
+    <linearGradient id="glassBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8f4ff"/>
+      <stop offset="18%" stop-color="#57c9ff"/>
+      <stop offset="44%" stop-color="#0b7ae8"/>
+      <stop offset="70%" stop-color="#0c2d74"/>
+      <stop offset="100%" stop-color="#07173c"/>
+    </linearGradient>
+
+    <linearGradient id="glassBlue2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dff9ff"/>
+      <stop offset="20%" stop-color="#7fd2ff"/>
+      <stop offset="45%" stop-color="#0d68d4"/>
+      <stop offset="76%" stop-color="#0d2f7d"/>
+      <stop offset="100%" stop-color="#081b49"/>
+    </linearGradient>
+
+    <linearGradient id="glassDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cfeaff"/>
+      <stop offset="20%" stop-color="#3da6ff"/>
+      <stop offset="48%" stop-color="#0d59d4"/>
+      <stop offset="100%" stop-color="#071635"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="22" stdDeviation="18" flood-color="#0a255e" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(70 10)">
+      <path d="M170 380 L80 500 L170 615 L280 610 L250 450 Z" fill="url(#chrome)" stroke="#dfeaf8" stroke-width="8"/>
+      <path d="M212 428 L340 379 L394 442 L344 611 L214 610 Z" fill="url(#glassBlue)" stroke="#dfeaf8" stroke-width="8"/>
+      <path d="M270 650 L420 545 L494 568 L428 720 L290 720 Z" fill="url(#chrome)" stroke="#dfeaf8" stroke-width="8"/>
+    </g>
+
+    <g transform="translate(335 100)">
+      <path d="M308 95 L394 60 L502 113 L527 239 L437 306 L325 291 L272 203 Z" fill="url(#glassBlue)"/>
+      <path d="M146 236 L256 154 L388 163 L432 256 L343 359 L214 361 L130 288 Z" fill="url(#glassBlue2)"/>
+      <path d="M370 140 L512 81 L643 136 L654 247 L542 316 L408 291 L355 235 Z" fill="url(#glassBlue)"/>
+      <path d="M255 270 L395 186 L561 201 L541 339 L401 422 L280 393 Z" fill="url(#glassBlue2)"/>
+      <path d="M122 365 L276 292 L388 294 L447 405 L358 514 L206 523 L112 446 Z" fill="url(#glassBlue)"/>
+      <path d="M390 356 L555 250 L671 295 L628 455 L488 529 L393 472 Z" fill="url(#glassBlue2)"/>
+      <path d="M266 404 L402 334 L518 346 L493 462 L383 535 L279 501 Z" fill="url(#chrome)" opacity="0.86"/>
+      <path d="M72 456 L149 398 L236 466 L175 573 L103 581 Z" fill="url(#glassDark)" opacity="0.9"/>
+      <path d="M530 448 L631 376 L707 417 L646 559 L562 588 L510 527 Z" fill="url(#glassDark)" opacity="0.9"/>
+      <path d="M287 556 L420 474 L536 493 L521 638 L385 692 L279 615 Z" fill="url(#chrome)" opacity="0.86"/>
+    </g>
+
+    <g transform="translate(275 185)">
+      <path d="M95 365 L194 300 L246 358 L190 474 L82 510 Z" fill="url(#chrome)"/>
+      <path d="M195 154 L299 92 L358 154 L321 329 L214 345 Z" fill="url(#glassBlue)"/>
+      <path d="M216 305 L324 245 L382 312 L346 471 L235 499 Z" fill="url(#chrome)"/>
+      <path d="M311 196 L397 145 L460 188 L431 335 L336 348 Z" fill="url(#glassBlue)"/>
+      <path d="M314 330 L404 274 L489 309 L468 450 L372 501 Z" fill="url(#chrome)"/>
+    </g>
+
+    <g transform="translate(150 0)">
+      <path d="M462 757 C630 661, 780 650, 972 712 C1116 762, 1229 850, 1348 899" fill="none" stroke="url(#glassBlue)" stroke-width="126" stroke-linecap="round"/>
+      <path d="M448 789 C630 696, 783 688, 961 749 C1104 800, 1213 860, 1340 912" fill="none" stroke="url(#chrome)" stroke-width="56" stroke-linecap="round" opacity="0.92"/>
+      <path d="M425 821 C605 741, 794 740, 972 797 C1098 840, 1205 887, 1339 932" fill="none" stroke="url(#glassBlue2)" stroke-width="28" stroke-linecap="round" opacity="0.72"/>
+    </g>
+
+    <g transform="translate(710 420)">
+      <path d="M0 155 L110 25 L196 18 L246 95 L188 272 L84 279 Z" fill="url(#chrome)" stroke="#dfeaf8" stroke-width="8"/>
+      <path d="M96 34 L174 28 L242 112 L181 179 Z" fill="url(#glassBlue)" opacity="0.82"/>
+      <path d="M9 282 L110 222 L187 244 L183 353 L94 388 Z" fill="url(#glassBlue2)" opacity="0.84"/>
+      <path d="M182 246 L274 195 L333 259 L264 383 L180 388 Z" fill="url(#glassDark)" opacity="0.82"/>
+    </g>
+
+    <g transform="translate(70 140)">
+      <path d="M0 425 L155 328 L245 332 L225 532 L93 592 Z" fill="url(#glassBlue)" stroke="#dfeaf8" stroke-width="8"/>
+      <path d="M156 331 L236 279 L291 308 L279 455 L192 514 Z" fill="url(#glassBlue2)" stroke="#dfeaf8" stroke-width="8"/>
+      <path d="M106 521 L251 451 L315 487 L286 664 L134 695 Z" fill="url(#chrome)" opacity="0.9"/>
+    </g>
+
+    <g transform="translate(250 520)">
+      <path d="M196 40 L283 0 L340 74 L319 207 L247 245 L156 211 Z" fill="url(#chrome)" stroke="#dfeaf8" stroke-width="8"/>
+      <path d="M263 53 L316 50 L351 96 L318 171 L263 188 L218 135 Z" fill="url(#glassBlue)" opacity="0.85"/>
+      <path d="M195 122 L258 90 L290 160 L246 212 L188 201 Z" fill="url(#glassBlue2)" opacity="0.82"/>
+      <path d="M155 193 L228 165 L256 231 L202 286 L136 274 Z" fill="url(#glassDark)" opacity="0.8"/>
+    </g>
+  </g>
+</svg>
